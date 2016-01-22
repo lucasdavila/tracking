@@ -37,6 +37,7 @@ gem 'rack-cors', '~> 0.4.0', :require => 'rack/cors'
 group :test do
   gem 'rspec-rails', '~> 3.4'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'capybara', '~> 2.6'
 end
 
 group :development, :test do
