@@ -1,6 +1,4 @@
-class Api::VisitsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
+class Api::VisitsController < Api::ApiController
   def create
     @visit = Visit.new permited_params
     @visit.visitor = current_visitor
@@ -19,8 +17,8 @@ class Api::VisitsController < ApplicationController
   end
 
   def current_visitor
-    create_visitor if current_session_id.blank? || _current_visitor.blank?
-    _current_visitor
+    create_visitor if current_session_id.blank? || super.blank?
+    super
   end
 
   def create_visitor
@@ -33,13 +31,5 @@ class Api::VisitsController < ApplicationController
 
   def random_session_id
     SecureRandom.hex 32
-  end
-
-  def current_session_id
-    cookies[:session_id]
-  end
-
-  def _current_visitor
-    @current_visitor ||= Visitor.find_by_session_id current_session_id
   end
 end
