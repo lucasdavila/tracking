@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :test do
   gem 'rspec-rails', '~> 3.4'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development, :test do
