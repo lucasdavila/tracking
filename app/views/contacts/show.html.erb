@@ -1,15 +1,34 @@
-<h1>Contact from <%= @contact.email %> </h1>
+<div class="ui breadcrumb">
+  <a href="<%= root_path %>" class="section">Home</a>
+  <i class="right chevron icon divider"></i>
+  <a href="<%= contacts_path %>" class="section">Contacts</a>
+  <i class="right chevron icon divider"></i>
+  <div class="active section"><%= @contact.email %></div>
+</div>
 
-<p>
-  Message: <%= @contact.message %>
-</p>
+<h2 chass="ui header">Contact</h2>
 
-<h2>Visited pages:</h2>
+<div class="ui comments">
+  <div class="comment">
+    <div class="avatar">
+      <i class="comment outline big icon"></i>
+    </div>
+    <div class="content">
+      <span class="author"><%= @contact.email %></span>
+      <div class="metadata">
+        <span class="date"><%= time_ago_in_words @contact.created_at %></span>
+      </div>
+      <div class="text">
+        <%= @contact.message %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
+<table class="ui striped table">
   <thead>
     <tr>
-      <th>Visited page</th>
+      <th>Visited pages</th>
     </tr>
   </thead>
 

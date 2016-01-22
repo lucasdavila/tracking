@@ -32,9 +32,12 @@ RSpec.feature 'Contacts', type: :feature do
   scenario 'User visits a contact page' do
     visit contact_path(contact)
 
-    expect(page).to have_text "Contact from #{contact.email}"
-    expect(page).to have_text "Message: #{contact.message}"
-    expect(page).to have_text "Visited pages:"
+    expect(page).to have_text "Contact"
+    expect(page).to have_text "#{contact.message}"
+
+    within('table thead') do
+      expect(page).to have_text "Visited pages"
+    end
 
     within('table tbody') do
       expect(page).to have_text first_visit.url, count: 1
