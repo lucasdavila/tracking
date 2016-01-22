@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     post 'visits' => 'visits#create'
+    post 'contacts' => 'contacts#create'
   end
 
   get 'libs/tracker' => 'libs#tracker'
