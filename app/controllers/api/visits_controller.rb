@@ -1,4 +1,6 @@
 class Api::VisitsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     @visit = Visit.new permited_params
     @visit.visitor = current_visitor
