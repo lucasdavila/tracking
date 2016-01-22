@@ -1,0 +1,21 @@
+<h1>Contacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td>
+          <%= link_to contact.email, contact_path(contact) %>
+        </td>
+        <td><%= contact.message %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
