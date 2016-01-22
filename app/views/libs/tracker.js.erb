@@ -5,4 +5,11 @@ var data = {
   datetime: (new Date).toISOString()
 };
 
-$.post('<%= api_visits_url %>', data);
+$.ajax({
+  type: 'POST',
+  url: '<%= api_visits_url %>',
+  data: data,
+  xhrFields: {
+    withCredentials: true
+  }
+});
