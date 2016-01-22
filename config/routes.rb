@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   namespace :api do
     post 'visits' => 'visits#create'
   end
+
+  get 'libs/tracker' => 'libs#tracker'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,8 @@
+<%= raw Rails.application.assets['jquery.js'] %>
+
+var data = {
+  url: window.location.href,
+  datetime: (new Date).toISOString()
+};
+
+$.post('<%= api_visits_url %>', data);
