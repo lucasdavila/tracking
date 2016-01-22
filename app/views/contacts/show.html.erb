@@ -1,0 +1,23 @@
+<h1>Contact from <%= @contact.email %> </h1>
+
+<p>
+  Message: <%= @contact.message %>
+</p>
+
+<h2>Visited pages:</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Visited page</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @visits.each do |visit| %>
+      <tr>
+        <td><%= visit.url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

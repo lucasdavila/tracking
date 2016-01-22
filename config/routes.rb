@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'libs/tracker' => 'libs#tracker'
 
   get 'contacts' => 'contacts#index', as: :contacts
-  get 'contacts/:id' => 'contacts#view', as: :contact
+  get 'contacts/:id' => 'contacts#show', as: :contact
 
   root 'contacts#index'
 
