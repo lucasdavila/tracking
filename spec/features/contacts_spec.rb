@@ -7,6 +7,7 @@ RSpec.feature 'Contacts', type: :feature do
     create :visitor, email: contact.email
     create :visit, visitor: visitor
     create :visit, url: 'http://foo.com/contact', visitor: visitor_another_session
+    create :visit, visitor: visitor
     create :visit, url: 'http://baz.com/pricing'
   end
 
@@ -36,6 +37,7 @@ RSpec.feature 'Contacts', type: :feature do
     expect(page).to have_text "Visited pages:"
 
     within('table tbody') do
+      expect(page).to have_text first_visit.url, count: 1
       expect(page).to have_text first_visit.url
       expect(page).to have_text second_visit.url
       expect(page).to_not have_text another_visitors_visit.url

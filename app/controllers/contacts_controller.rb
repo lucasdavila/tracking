@@ -11,6 +11,9 @@ class ContactsController < ApplicationController
   protected
 
   def visits
-    Visit.joins(:visitor).where('visitors.email = ?', @contact.email).uniq :url
+    visits = Visit.all.select 'distinct on (visits.url) visits.url, *'
+    visits = visits.joins :visitor
+    visits = visits.where 'visitors.email = ?', @contact.email
+    visits
   end
 end
