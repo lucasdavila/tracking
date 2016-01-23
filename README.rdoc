@@ -1,28 +1,40 @@
-== README
+== Tracking
+A simple way to track visited pages.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== Development environment
 
-Things you may want to cover:
+This app runs on Rails. To setup the development env, follow these steps:
 
-* Ruby version
+* Clone this repo
+* Install gems with $ bundle install
+* Create a database $ rake db:create
+* Migrate the database $ rake db:migrate
+* Run the server $ rails s
 
-* System dependencies
+=== How it works
 
-* Configuration
+This tracking system can track visits to your site's pages, and also receive contact messages. When a user send a contact the sistem will assign his visits to his email, this way you can see which pages that user already visited.
 
-* Database creation
+* To track your site, simple put this html code in each page you want to track:
 
-* Database initialization
+    <script src="TRACKING_BASE_URL/libs/tracker.js"></script>
+    
+  Remember to replace TRACKING_BASE_URL by your own base url.
+  
+* To receive messages and assign visits to that user, you can use the /api/contacts API endpoint. After sending a message the system will automatically assign all user's visits to his current visitor session.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  eg of post:
+  
+    $.ajax({
+      type: 'POST',
+      url: '<%= settings.tracking_base_url %>/api/contacts',
+      data: {
+        email: 'foo@mail.com',
+        message: 'Hey there!'
+      },
+      xhrFields: {
+        withCredentials: true
+      },
+      success: callback,
+      error: errorCallback
+    });
