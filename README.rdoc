@@ -13,18 +13,18 @@ This app runs on Rails. To setup the development env, follow these steps:
 
 === How it works
 
-This tracking system can track visits to your site's pages, and also receive contact messages. When a user send a contact the sistem will assign his visits to his email, this way you can see which pages that user already visited.
+This tracking system can track visits to your site's pages, and also receive contact messages. When a user send a contact the system will assign his visits to his email, this way you can see which pages that user already visited.
 
 * To track your site, simple put this html code in each page you want to track:
 
     <script src="TRACKING_BASE_URL/libs/tracker.js"></script>
-    
+
   Remember to replace TRACKING_BASE_URL by your own base url.
-  
+
 * To receive messages and assign visits to that user, you can use the /api/contacts API endpoint. After sending a message the system will automatically assign all user's visits to his current visitor session.
 
   eg of post:
-  
+
     $.ajax({
       type: 'POST',
       url: '<%= settings.tracking_base_url %>/api/contacts',
