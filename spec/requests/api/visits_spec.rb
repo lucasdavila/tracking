@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Api::Visits', type: :request do
   describe 'POST /visit' do
-    let(:data) { { url: 'http://foobar.com/', datetime: Time.now, visitor_id: 10000 } }
+    let(:data) { { url: 'http://foobar.com/', datetime: Time.now } }
     let(:last_visit) { Visit.last }
     let(:new_visitor) { Visitor.find_by_session_id cookies['session_id'] }
 
